@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AJS</title>
+<script type="text/javascript" src="http://libs.useso.com/js/angular.js/1.3.0-beta.9/angular.min.js"></script>
+<!-- <script type="text/javascript" src="js/lib/angular.min.js"></script> -->
+</head>
+
+<body>
+<div ng-app="" ng-init="names=['Jani', 'Hege', 'Kai']">
+	 <p>使用ng-repeat 来循环数组</p>
+   <ul>
+   	<li ng-repeat="x in names">
+   		{{ x }}
+   	</li>
+   </ul>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AJS</title>
+<script type="text/javascript" src="http://libs.useso.com/js/angular.js/1.3.0-beta.9/angular.min.js"></script>
+<!-- <script type="text/javascript" src="js/lib/angular.min.js"></script> -->
+</head>
+
+<body>
+<div ng-app="myApp"  ng-controller="myCtrl">
+	姓： <input type="text" ng-model="firstName"><br>
+	名： <input type="text" ng-model="lastName"><br>
+	姓名：{{firstName + " " + lastName}}
+
+</div>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope){
+    	$scope.firstName = "John";
+    	$scope.lastName = "Doe";
+	});
+
+
+</script>
+
+</body>
+</html>
