@@ -1,0 +1,29 @@
+{
+  "name": "angulartest",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "tinghan"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angularJS"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

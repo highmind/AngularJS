@@ -1,0 +1,19 @@
+{
+  "name": "angulartest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.7.9",
+    "http-server": "^0.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angularJS"
+  ],
+  "author": "tinghan",
+  "license": "ISC"
+}
