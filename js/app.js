@@ -26,8 +26,30 @@
    ]
 
   var app = angular.module('movie', []);
+
+  // 电影controller
   app.controller('MovieController', function($scope){
     $scope.movieArr = movieArr;
   });
+
+  // 分类tab控制器
+  app.controller('PanelController', function(){
+
+      //tab初始值
+      this.tab = 1;
+
+      // tab选择tab，ng-click时调用
+      this.selectTab = function(setTab){
+       this.tab = setTab;
+      }
+       
+      // 是否选中,ng-class调用
+      this.isSelected = function(checkTab){
+        return this.tab === checkTab;
+      }
+
+  });
+   
+
 
 })();

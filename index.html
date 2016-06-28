@@ -20,14 +20,38 @@
 
     <div class="row">
         <div class="page-header">
-            <ul class="nav nav-tabs">
-              <li role="presentation" class="active"><a href="#">首页</a></li>
-              <li role="presentation"><a href="#">列表页</a></li>
-              <li role="presentation"><a href="#">详情页</a></li>
+            <h1>电影网站</h1>
+            <ul class="nav nav-pills">
+              <li role="presentation" class="active"><a href >首页</a></li>
+              <li role="presentation"><a href>列表页</a></li>
+              <li role="presentation"><a href >详情页</a></li>
             </ul>
+        </div>
+          <!-- as panel是控制器的别名，只有控制器内部使用了 this才可以使用别名 -->
+         <div class="page-header" ng-controller="PanelController as panel">
+            <!-- ng-init是tab的 初始值 -->
+            <ul class="nav nav-tabs">
+                <!-- 使用ng-click处理tab标签, ng-class 当 ：后面的表达式为true时，添加前面的类 -->
+              <li role="presentation"  ng-click="panel.selectTab(1)" ng-class="{active:panel.isSelected(1)}"><a href >科幻</a></li>
+              <li role="presentation"  ng-click="panel.selectTab(2)" ng-class="{active:panel.isSelected(2)}"><a href>爱情</a></li>
+              <li role="presentation"  ng-click="panel.selectTab(3)" ng-class="{active:panel.isSelected(3)}"><a href >古装</a></li>
+            </ul>
+        </div>
+
+        <div class="panel" ng-show="panel.isSelected(1)">
+            科幻
+        </div>
+
+        <div class="panel" ng-show="panel.isSelected(1)">
+            爱情
+        </div>
+
+         <div class="panel" ng-show="panel.isSelected(1)">
+            古装
         </div>
     </div>
 
+<!-- 使用ng-controller设置控制器 -->
 <div class="row" ng-controller="MovieController">
 
     <div class="row mT20"  ng-repeat="movie in movieArr">
