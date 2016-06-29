@@ -81,7 +81,8 @@
                 <p>类型:{{movie.genres[0]}}</p>
                 <p>年份:{{movie.year}}</p>
                 <p>
-                  <a href="/detail.html" class="btn btn-primary" role="button">查询详情</a>
+                  <!-- 传参 ？前需要加#号 -->
+                  <a href="/detail.html#?id={{movie.id}}" class="btn btn-primary" role="button">查询详情</a>
                </p>
             </div>
           </div>
