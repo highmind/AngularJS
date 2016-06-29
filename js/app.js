@@ -7,12 +7,12 @@
   app.controller('MovieController', function($scope, $http){
 
     $scope.movieArr = [];
-    $scope.testArr = [1,2,3,4,5,6,7,8,9,10,11];
+
     // 使用jsonp跨越访问远程接口
     $http.jsonp("http://gyy.jastoo.net/api/movie.php?callback=JSON_CALLBACK").success(function(response) {
-
-      $scope.movieArr = response.subjects;
-
+ 
+        $scope.movieArr = response.subjects;
+        console.log($scope.movieArr.length);
 
     });
 
