@@ -7,7 +7,6 @@
   app.controller('MovieController', function($scope, $http){
 
     $scope.movieArr = [];
-    $scope.testArr = [1,2,3,4,5,6,7,8,9,10,11];
     // 使用jsonp跨越访问远程接口
     $http.jsonp("http://gyy.jastoo.net/api/movie.php?callback=JSON_CALLBACK").success(function(response) {
 
@@ -35,6 +34,20 @@
       }
 
   });
+
+  // 评论表单控制器
+  app.controller('ReviewController', function(){
+    
+    this.review = {};
+  
+    // 添加评论方法，像当前数据中push 评论对象
+    this.addReview = function(movie){
+      movie.reviews.push(this.review);
+      this.review = {}; //重置表单数据和预览数据为空
+     }
+
+  });
+   
 
 
 })();

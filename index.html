@@ -17,7 +17,7 @@
 
 
 <div class="container">
-
+<!-- 头部开始 -->
     <div class="row">
         <div class="page-header">
             <h1>电影网站</h1>
@@ -54,92 +54,118 @@
         <!-- PanelController结束 -->
        
     </div>
+<!-- 头部结束 -->
 
+<!-- 主体开始 -->
 <!-- 使用ng-controller设置控制器 -->
-<div class="row" ng-controller="MovieController">
+<div class="detailBox"  ng-controller="MovieController">
+  <table>
 
-    <div class="row mT20"  ng-repeat="movie in movieArr">
-        <div class="col-md-7">
-           <img class="" ng-src="{{movie.poster}}" alt="{{movie.title}}"> 
-        </div>
-          
-        <div class="col-md-5" >
-            <!-- 使用ng-repeat循环数组 -->
-            <h3>{{movie.title}}</h3>
-            <p>票价:{{movie.price |currency}}</p>  
-            <p>导演:{{movie.doctor}}</p>     
-            <p>语言:{{movie.language}}</p>
-            <p>年份:{{movie.pubtime | date:"yyyy年MM月dd日 hh:mm"}}</p>
-            <p>简介:{{movie.summary}}</p>
-            <!-- 数据btn为true时，显示按钮 -->
-            <button class="btn btn-primary" ng-show="{{movie.btn}}">提交</button>   
-        </div> 
+    <tr border="1" ng-repeat="test in testArr" ng-if="$index % 3 === 0 && !$last ">
 
-        <!-- 评论开始 -->
-        <div class="rowmT20">
+      <td border="1" ng-if="testArr[$index+2]">
+        {{testArr[$index]}}
+      </td>
+       <td border="1" ng-if="testArr[$index+2]">
+        {{testArr[$index +1]}}
+      </td>
+       <td border="1" ng-if="testArr[$index+2]" >
+        {{testArr[$index+2]}}
+      </td>
+    </tr>
 
-          <div class="col-md-12">
-            <h3>评论</h3>
-            <blockquote ng-repeat="review in movie.reviews">
-              <b>分数：{{review.star}}</b>
-              <p>{{review.body}}</p>
-              <small>来自：{{review.author}}</small>
-            </blockquote>
+     <tr border="1" ng-repeat="movie in testArr" ng-if="$last && $index % 3 !== 0">
+
+      <td border="1" >
+        {{$index}}
+      </td>
+    </tr>
+
+
+  </table>
+  <div class="detailCon" >
+    <!-- 当索引为0或者3的倍数 而且不是最后一个时，按3列输出 -->
+    <div class="row"  ng-repeat="movie in movieArr" ng-if="$index % 3 === 0 && !$last ">
+
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img ng-src="{{movieArr[$index].images.large}}" alt="{{movieArr[$index].title}}">
+
+            <div class="caption">
+              <!-- 使用ng-repeat循环数组 -->
+                <h4><b>{{movieArr[$index].title}}</b></h4> 
+                <p>导演:{{movieArr[$index].directors[0].name}}</p>     
+                <p>类型:{{movieArr[$index].genres[0]}}</p>
+                <p>年份:{{movieArr[$index].year}}</p>
+                <p>
+                  <a href="#" class="btn btn-primary" role="button">查询详情</a>
+               </p>
+            </div>
           </div>
-          <!-- 评论表单开始 -->
-          <div class="col-md-6">
-            <form class="form-horizontal" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(movie)">
-              <!-- 用于即时显示用户输入内容 -->
-              <blockquote>
-                <b>分数：{{reviewCtrl.review.star}}</b>
-                <p>{{reviewCtrl.review.body}}</p>
-                <small>来自：{{reviewCtrl.review.author}}</small>
-              </blockquote>
-                <!-- 使用ng-model进行双向数据绑定 -->
-               <div class="form-group">
-                <label for="textStar" class="col-sm-2 control-label">分数：</label>
-                <div class="col-sm-3">
-                  <select ng-model="reviewCtrl.review.star"  class="form-control" id="textStar">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
-                <div class="col-sm-10">
-                  <input ng-model="reviewCtrl.review.author" type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
-                </div>
-              </div>
+        </div>
 
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
-                <div class="col-sm-10">
-                  <textarea ng-model="reviewCtrl.review.body"  class="form-control" id="inputPassword3" placeholder="内容"></textarea>
-                </div>
-              </div>
+        <div class="col-md-4">
+         <div class="thumbnail">
+            <img ng-src="{{movieArr[$index+1].images.large}}" alt="{{movieArr[$index+1].title}}">
 
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary" >评论</button>
-                </div>
-              </div>
-
-            </form>
+            <div class="caption">
+              <!-- 使用ng-repeat循环数组 -->
+                <h4><b>{{movieArr[$index+1].title}}</b></h4> 
+                <p>导演:{{movieArr[$index+1].directors[0].name}}</p>     
+                <p>类型:{{movieArr[$index+1].genres[0]}}</p>
+                <p>年份:{{movieArr[$index+1].year}}</p>
+                <p>
+                  <a href="#" class="btn btn-primary" role="button">查询详情</a>
+               </p>
+            </div>
           </div>
-          <!-- 评论表单结束 -->
+        </div>
+
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img ng-src="{{movieArr[$index+2].images.large}}" alt="{{movieArr[$index+2].title}}">
+
+            <div class="caption">
+              <!-- 使用ng-repeat循环数组 -->
+                <h4><b>{{movieArr[$index+2].title}}</b></h4> 
+                <p>导演:{{movieArr[$index+2].directors[0].name}}</p>     
+                <p>类型:{{movieArr[$index+2].genres[0]}}</p>
+                <p>年份:{{movieArr[$index+2].year}}</p>
+                <p>
+                  <a href="#" class="btn btn-primary" role="button">查询详情</a>
+               </p>
+            </div>
+
+          </div>
+        </div>
 
         </div>
-        <!-- 评论结束 -->
+       
+        <div class="row"  ng-repeat="movie in movieArr" ng-if="$last && $index % 3 !== 0">
+               <div class="col-md-4">
+                 <div class="thumbnail">
+                    <img ng-src="{{movieArr[$index].images.large}}" alt="{{movieArr[$index].title}}">
 
-    </div>
+                    <div class="caption">
+                      <!-- 使用ng-repeat循环数组 -->
+                        <h4><b>{{movieArr[$index].title}}</b></h4> 
+                        <p>导演:{{movieArr[$index].directors[0].name}}</p>     
+                        <p>类型:{{movieArr[$index].genres[0]}}</p>
+                        <p>年份:{{movieArr[$index].year}}</p>
+                        <p>
+                          <a href="#" class="btn btn-primary" role="button">查询详情</a>
+                       </p>
+                    </div>
+                  </div>
+                </div>
+        </div>
 
-    
 
+     </div>
+  </div>
 </div>
+<!-- 主体结束 -->
+
 
 </div>
 
