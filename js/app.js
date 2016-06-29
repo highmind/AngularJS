@@ -45,6 +45,7 @@
        
       // 是否选中,ng-class调用
       this.isSelected = function(checkTab){
+       console.log(this.tab === checkTab)
         return this.tab === checkTab;
       }
 

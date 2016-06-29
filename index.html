@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="movie">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -13,7 +13,7 @@
 </style>
 </head>
 
-<body ng-app="movie">
+<body>
 
 
 <div class="container">
@@ -27,6 +27,7 @@
               <li role="presentation"><a href >详情页</a></li>
             </ul>
         </div>
+          <!-- PanelController开始 -->
           <!-- as panel是控制器的别名，只有控制器内部使用了 this才可以使用别名 -->
          <div class="page-header" ng-controller="PanelController as panel">
             <!-- ng-init是tab的 初始值 -->
@@ -36,19 +37,22 @@
               <li role="presentation"  ng-click="panel.selectTab(2)" ng-class="{active:panel.isSelected(2)}"><a href>爱情</a></li>
               <li role="presentation"  ng-click="panel.selectTab(3)" ng-class="{active:panel.isSelected(3)}"><a href >古装</a></li>
             </ul>
-        </div>
 
-        <div class="panel" ng-show="panel.isSelected(1)">
-            科幻
-        </div>
+            <div class="panel" ng-show="panel.isSelected(1)">
+                科幻
+            </div>
 
-        <div class="panel" ng-show="panel.isSelected(1)">
-            爱情
-        </div>
+            <div class="panel" ng-show="panel.isSelected(2)">
+                爱情
+            </div>
 
-         <div class="panel" ng-show="panel.isSelected(1)">
-            古装
+             <div class="panel" ng-show="panel.isSelected(3)">
+                古装
+            </div>
+
         </div>
+        <!-- PanelController结束 -->
+       
     </div>
 
 <!-- 使用ng-controller设置控制器 -->
