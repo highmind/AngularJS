@@ -1,7 +1,7 @@
 {
   "name": "angulartest",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "angular movie",
   "main": "index.js",
   "dependencies": {
     "bower": "^1.7.9",
