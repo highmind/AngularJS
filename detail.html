@@ -39,8 +39,22 @@
 
     <div class="col-md-8">
       <h3><b>{{detailData.title}}</b></h3> 
+      <p>又名：
+         {{detailData.aka[0]}}
+      </p>
+      <p>评分:{{detailData.rating.average}}</p> 
+      <p>国家:{{detailData.countries[0]}}</p>  
       <p>导演:{{detailData.directors[0].name}}</p>     
-      <p>类型:{{detailData.genres[0]}}</p>
+      <p>主演:
+        <span ng-repeat="cast in detailData.casts">
+          {{cast.name}}&nbsp;
+        </span>
+      </p>
+      <p>类型:
+        <span ng-repeat="genre in detailData.genres">
+          {{genre}}&nbsp;
+        </span>
+      </p>
       <p>年份:{{detailData.year}}</p>
       <p>简介：{{detailData.summary}}</p>
     </div>
@@ -48,6 +62,66 @@
      {{detailArr.rating.max}}
 
   </div>
+
+   <!-- 评论开始 -->
+       <div class="rowmT20"  ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(reviews)">
+
+         <div class="col-md-12">
+           <h3>评论</h3>
+           <blockquote ng-repeat="review in reviewCtrl.reviews">
+             <b>分数：{{review.star}}</b>
+             <p>{{review.body}}</p>
+             <small>来自：{{review.author}}</small>
+           </blockquote>
+         </div>
+         <!-- 评论表单开始 -->
+         <div class="col-md-6">
+           <form class="form-horizontal">
+             <!-- 用于即时显示用户输入内容 -->
+             <blockquote>
+               <b>分数：{{reviewCtrl.review.star}}</b>
+               <p>{{reviewCtrl.review.body}}</p>
+               <small>来自：{{reviewCtrl.review.author}}</small>
+             </blockquote>
+               <!-- 使用ng-model进行双向数据绑定 -->
+              <div class="form-group">
+               <label for="textStar" class="col-sm-2 control-label">分数：</label>
+               <div class="col-sm-3">
+                 <select ng-model="reviewCtrl.review.star"  class="form-control" id="textStar">
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5">5</option>
+                 </select>
+               </div>
+             </div>
+             <div class="form-group">
+               <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
+               <div class="col-sm-10">
+                 <input ng-model="reviewCtrl.review.author" type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
+               </div>
+             </div>
++
+             <div class="form-group">
+               <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
+               <div class="col-sm-10">
+                 <textarea ng-model="reviewCtrl.review.body"  class="form-control" id="inputPassword3" placeholder="内容"></textarea>
+               </div>
+             </div>
++
+             <div class="form-group">
+               <div class="col-sm-offset-2 col-sm-10">
+                 <button type="submit" class="btn btn-primary" >评论</button>
+               </div>
+             </div>
++
+           </form>
+         </div>
+         <!-- 评论表单结束 -->
++
+       </div>
+       <!-- 评论结束 -->
 
 </div>
 
