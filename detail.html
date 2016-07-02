@@ -77,24 +77,25 @@
            </blockquote>
          </div>
           <!-- 显示评论结束 -->
+
          <!-- 评论表单开始 -->
          <div class="col-md-6">
-           <form class="form-horizontal"  ng-submit="addReview(DetailController.review)">
+           <form class="form-horizontal"  ng-submit="addReview(review)">
              <!-- 用于即时显示用户输入内容 -->
              <blockquote>
               <p>
                 <img class="userHead" src="http://p0.meituan.net/movie/__40465654__9539763.png">
-                &nbsp;&nbsp;{{DetailController.review.nickName}} 
+                &nbsp;&nbsp;{{review.nickName}} 
               </p>
-              <p><b>{{DetailController.review.score}}分</b> &nbsp;&nbsp;{{DetailController.review.content}}</p>
-              <small> {{DetailController.review.time}}</small>
+              <p><b>{{review.score}}分</b> &nbsp;&nbsp;{{review.content}}</p>
+              <small> {{review.time}}</small>
            </blockquote>
              </blockquote>
                <!-- 使用ng-model进行双向数据绑定 -->
               <div class="form-group">
                <label for="textStar" class="col-sm-2 control-label">分数：</label>
                <div class="col-sm-3">
-                 <select ng-model="DetailController.review.score"  class="form-control" id="textStar">
+                 <select ng-model="review.score"  class="form-control" id="textStar">
                    <option value="1">1</option>
                    <option value="2">2</option>
                    <option value="3">3</option>
@@ -106,14 +107,14 @@
              <div class="form-group">
                <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
                <div class="col-sm-10">
-                 <input ng-model="DetailController.review.nickName" type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
+                 <input ng-model="review.nickName" type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
                </div>
              </div>
 
              <div class="form-group">
                <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
                <div class="col-sm-10">
-                 <textarea ng-model="DetailController.review.content"  class="form-control" id="inputPassword3" placeholder="内容"></textarea>
+                 <textarea ng-model="review.content"  class="form-control" id="inputPassword3" placeholder="内容"></textarea>
                </div>
              </div>
 
