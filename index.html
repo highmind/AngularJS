@@ -72,14 +72,18 @@
         <!-- 当索引为3或者倍数时，添加清除浮动的类 clearBoth-->
         <div class="col-md-3"  ng-repeat="movie in movieArr"  ng-class="{clearBoth:$index % 4 === 0}">
           <div class="thumbnail">
-            <img ng-src="{{movie.images.large}}" alt="{{movie.title}}">
+            <img ng-src="{{movie.img}}" alt="{{movie.nm}}">
 
             <div class="caption text-center">
           
-                <h3><b>{{movie.title}}</b></h3> 
-                <p>导演:{{movie.directors[0].name}}</p>     
-                <p>类型:{{movie.genres[0]}}</p>
-                <p>年份:{{movie.year}}</p>
+                <h3><b>{{movie.nm}}</b></h3> 
+                <p><b>{{movie.scm}}</b></p>
+                <p><b>{{movie.sc}}分</b></p> 
+                <p>影厅:{{movie.ver}}</p>
+                <p>导演:{{movie.dir}}</p>     
+                <p>类型:{{movie.cat}}</p>
+                <p>上映时间:{{movie.rt}}</p>
+                <p>{{movie.showInfo}}</p>
                 <p>
                   <!-- 传参 ？前需要加#号 -->
                   <a href="/detail.html#?id={{movie.id}}" class="btn btn-primary" role="button">查询详情</a>
