@@ -8,7 +8,10 @@
 <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
 <!-- route模块需要单独安装，使用 bower install angular-route 安装 -->
 <script type="text/javascript" src="/bower_components/angular-route/angular-route.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
+
 <style>
     .mT20{margin-top:20px;}
     .clearBoth{clear:both;}
@@ -26,7 +29,7 @@
             <ul class="nav nav-pills">
               <li role="presentation" class="active"><a href="/#/" >首页</a></li>
               <li role="presentation"><a href="/#/">电影</a></li>
-              <li role="presentation"><a href >影院</a></li>
+              <li role="presentation"><a href="/#cinema/" >影院</a></li>
             </ul>
         </div>
          
@@ -36,6 +39,7 @@
     <div ng-view></div>
 
 </div>
+
 
 </body>
 </html>

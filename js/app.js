@@ -13,6 +13,10 @@
       templateUrl : 'views/detail.html',
       controller : 'DetailController'
     })
+    .when('/cinema/', {
+      templateUrl : 'views/cinema.html',
+      controller : 'CinemaController'
+    })
     .otherwise({
       redirectTo: '/'
     })
@@ -62,6 +66,32 @@
      }
 
    
+  });
+
+
+
+  // 影院controller 
+  app.controller('CinemaController', function($scope, $http){
+
+    $scope.cinemaData = [];
+
+    // 使用jsonp跨越访问远程接口
+    $http.jsonp("http://gyy.jastoo.net/api/cinema-my.php?callback=JSON_CALLBACK").success(function(response) {
+        
+     
+        
+        for(var item in response.data){
+          var json = {'item' : item, 'data' : response.data[item] };
+
+          $scope.cinemaData.push(json);
+
+        }
+
+       console.log($scope.cinemaData )
+
+
+    });
+
   });
 
 
