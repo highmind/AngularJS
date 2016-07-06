@@ -1,7 +1,23 @@
 (function(){
 
+  var app = angular.module('movie', ['ngRoute']);
 
-  var app = angular.module('movie', []);
+  // 路由设置
+  app.config(['$routeProvider', function($routeProvider,$locationProvider){
+    
+    $routeProvider.when('/', {
+      templateUrl :'views/home.html',
+      controller : 'MovieController'
+    })
+    .when('/detail/:movieId', {
+      templateUrl : 'views/detail.html',
+      controller : 'DetailController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    })
+
+  }]);
 
   // 电影controller,使用http 服务获取远程数据 
   app.controller('MovieController', function($scope, $http){
@@ -19,23 +35,35 @@
 
   });
 
-  // 分类tab控制器
-  app.controller('PanelController', function(){
+  // 电影详情controller
+  app.controller('DetailController', function($scope, $rootElement, $http,$routeParams, $location){
 
-      //tab初始值
-      this.tab = 1;
+    $scope.detailData = [];
+    $scope.reviewData = [];
+    // console.log($routeParams.movieId);
+     // 使用jsonp跨越访问远程接口
+    $http.jsonp("http://gyy.jastoo.net/api/detail-my.php?callback=JSON_CALLBACK&id="+$routeParams.movieId).success(function(data) {
+ 
+        $scope.detailData = data.data.MovieDetailModel;
+        $scope.reviewData = data.data.CommentResponseModel.cmts;
+        // console.log(data.data);
+        // console.log($scope.reviewData[0].nickName);
 
-      // tab选择tab，ng-click时调用
-      this.selectTab = function(setTab){
-       this.tab = setTab;
-      }
-       
-      // 是否选中,ng-class调用
-      this.isSelected = function(checkTab){
-        return this.tab === checkTab;
-      }
+    });
 
+    $scope.review = {};
+  
+    // 添加评论方法，像当前数据中push 评论对象
+    $scope.addReview = function(movie){
+     
+      $scope.reviewData.push(movie);
+      // console.log($scope.reviewData);
+      $scope.review = {}; //重置表单数据和预览数据为空
+     }
+
+   
   });
+
 
 
 })();

@@ -1,37 +1,11 @@
-<!DOCTYPE html>
-<html  ng-app="detail">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>详情页面-AJS</title>
-<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- 使用ng-controller设置控制器 -->
+  <!-- 路径导航开始 -->
+<ol class="breadcrumb">
+  <li><a href="index.html#/">首页</a></li>
+  <li><a href="index.html#/">电影</a></li>
+  <li class="active">{{detailData.nm}}</li>
+</ol>
 
-<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
-<script type="text/javascript" src="/js/detail.js"></script>
-<style>
-    .mT20{margin-top:20px;}
-    .userHead{width:68px;height:68px;border-radius:68px;background-size: 100% 100%}
-</style>
-</head>
-
-<body ng-controller="DetailController">
-
-
-<div class="container" >
-
-    <div class="row">
-        <div class="page-header">
-            <h1>芝麻电影</h1>
-            <ul class="nav nav-pills">
-              <li role="presentation" class="active"><a href >首页</a></li>
-              <li role="presentation"><a href>列表页</a></li>
-              <li role="presentation"><a href >详情页</a></li>
-            </ul>
-        </div>
-        
-    </div>
-
-  <!-- 使用ng-controller设置控制器 -->
   <div class="row" >
 
     <div class="col-md-4">
@@ -130,8 +104,3 @@
 
        </div>
        <!-- 评论结束 -->
-
-</div>
-
-</body>
-</html>

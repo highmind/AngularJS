@@ -6,15 +6,17 @@
 <title>芝麻电影-AJS-MY</title>
 <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+<!-- route模块需要单独安装，使用 bower install angular-route 安装 -->
+<script type="text/javascript" src="/bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <style>
     .mT20{margin-top:20px;}
     .clearBoth{clear:both;}
+    .userHead{width:68px;height:68px;border-radius:68px;background-size: 100% 100%}
 </style>
 </head>
 
 <body>
-
 
 <div class="container">
 <!-- 头部开始 -->
@@ -22,82 +24,16 @@
         <div class="page-header">
             <h1>芝麻电影</h1>
             <ul class="nav nav-pills">
-              <li role="presentation" class="active"><a href >首页</a></li>
-              <li role="presentation"><a href>列表页</a></li>
-              <li role="presentation"><a href >详情页</a></li>
+              <li role="presentation" class="active"><a href="/#/" >首页</a></li>
+              <li role="presentation"><a href="/#/">电影</a></li>
+              <li role="presentation"><a href >影院</a></li>
             </ul>
         </div>
-          <!-- PanelController开始 -->
-          <!-- as panel是控制器的别名，只有控制器内部使用了 this才可以使用别名 -->
-         <div class="page-header" ng-controller="PanelController as panel">
-            <!-- ng-init是tab的 初始值 -->
-            <ul class="nav nav-tabs">
-                <!-- 使用ng-click处理tab标签, ng-class 当 ：后面的表达式为true时，添加前面的类 -->
-              <li role="presentation"  ng-click="panel.selectTab(1)" ng-class="{active:panel.isSelected(1)}"><a href >科幻</a></li>
-              <li role="presentation"  ng-click="panel.selectTab(2)" ng-class="{active:panel.isSelected(2)}"><a href>爱情</a></li>
-              <li role="presentation"  ng-click="panel.selectTab(3)" ng-class="{active:panel.isSelected(3)}"><a href >古装</a></li>
-            </ul>
-
-            <div class="panel" ng-show="panel.isSelected(1)">
-                科幻
-            </div>
-
-            <div class="panel" ng-show="panel.isSelected(2)">
-                爱情
-            </div>
-
-             <div class="panel" ng-show="panel.isSelected(3)">
-                古装
-            </div>
-
-        </div>
-        <!-- PanelController结束 -->
-       
+         
     </div>
 <!-- 头部结束 -->
 
-<!-- 路径导航开始 -->
-<ol class="breadcrumb">
-  <li><a href="#">电影</a></li>
-  <li><a href="#">正在热映</a></li>
-  <li class="active">即将上映</li>
-</ol>
-<!-- 路径导航结束 -->
-
-<!-- 主体开始 -->
-<!-- 使用ng-controller设置控制器 -->
-<div class="detailBox"  ng-controller="MovieController">
-  
-    <div class="row">
-        <!-- 当索引为3或者倍数时，添加清除浮动的类 clearBoth-->
-        <div class="col-md-3"  ng-repeat="movie in movieArr"  ng-class="{clearBoth:$index % 4 === 0}">
-          <div class="thumbnail">
-            <img ng-src="{{movie.img}}" alt="{{movie.nm}}">
-
-            <div class="caption text-center">
-          
-                <h3><b>{{movie.nm}}</b></h3> 
-                <p><b>{{movie.scm}}</b></p>
-                <p><b>{{movie.sc}}分</b></p> 
-                <p>影厅:{{movie.ver}}</p>
-                <p>导演:{{movie.dir}}</p>     
-                <p>类型:{{movie.cat}}</p>
-                <p>上映时间:{{movie.rt}}</p>
-                <p>{{movie.showInfo}}</p>
-                <p>
-                  <!-- 传参 ？前需要加#号 -->
-                  <a href="/detail.html#?id={{movie.id}}" class="btn btn-primary" role="button">查询详情</a>
-               </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-     
-  </div>
-</div>
-<!-- 主体结束 -->
-
+    <div ng-view></div>
 
 </div>
 
