@@ -4,6 +4,6 @@
  $url = 'http://m.maoyan.com/movie/list.json?type=hot&offset=0&limit=1000';
  $content = file_get_contents($url);
  
- echo('angular.callbacks._0('. $content .')');
+ echo($str.'('. $content .')');
 
 ?>

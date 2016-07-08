@@ -16,6 +16,6 @@ curl_setopt ($ch, CURLOPT_TIMEOUT, 30);
 $file_contents = curl_exec($ch);//抓取的内容放在变量中
 curl_close($ch); 
 
-echo('angular.callbacks._0('. $file_contents .')');
+echo($str.'('. $file_contents .')');
 
 ?>

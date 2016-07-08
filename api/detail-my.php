@@ -6,6 +6,6 @@
  $url = 'http://m.maoyan.com/movie/'.$id.'.json';
  $content = file_get_contents($url);
  
- echo('angular.callbacks._0('. $content .')');
+ echo($str.'('. $content .')');
 
 ?>
