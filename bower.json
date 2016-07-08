@@ -1,6 +1,6 @@
 {
   "name": "angulartest",
-  "description": "",
+  "description": "angular movie",
   "main": "index.js",
   "authors": [
     "tinghan"
@@ -9,7 +9,6 @@
   "keywords": [
     "angularJS"
   ],
-  "moduleType": [],
   "homepage": "",
   "private": true,
   "ignore": [
@@ -20,10 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.5.7",
-    "bootstrap": "^3.3.6"
-  },
-  "devDependencies": {
+    "angular-route": "^1.5.7",
     "bootstrap": "^3.3.6"
   }
 }
