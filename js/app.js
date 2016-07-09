@@ -28,7 +28,6 @@
 
     $scope.movieArr = [];
     
-
     // 使用jsonp跨越访问远程接口
     $http.jsonp("http://gyy.jastoo.net/api/movie-my.php?callback=JSON_CALLBACK").success(function(response) {
 
@@ -59,7 +58,6 @@
   
     // 添加评论方法，像当前数据中push 评论对象
     $scope.addReview = function(movie){
-     
       $scope.reviewData.push(movie);
       // console.log($scope.reviewData);
       $scope.review = {}; //重置表单数据和预览数据为空
@@ -77,18 +75,13 @@
 
     // 使用jsonp跨越访问远程接口
     $http.jsonp("http://gyy.jastoo.net/api/cinema-my.php?callback=JSON_CALLBACK").success(function(response) {
-        
-     
-        
+        // 将影院所在区进行整理
         for(var item in response.data){
           var json = {'item' : item, 'data' : response.data[item] };
-
           $scope.cinemaData.push(json);
-
         }
 
        console.log($scope.cinemaData )
-
 
     });
 
