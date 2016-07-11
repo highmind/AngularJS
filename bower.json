@@ -20,8 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.5.7",
-    "bootstrap": "^3.3.6"
+    "angular-route": "^1.5.7"
   },
   "devDependencies": {
     "bootstrap": "^3.3.6"
