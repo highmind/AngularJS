@@ -17,12 +17,15 @@
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false"  aria-controls="collapseOne">
           {{cinema.item}}
         </a>
+
       </h4>
     </div>
 
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="cinemaDetail in cinema.data">{{cinemaDetail.nm}}</li>
+            <li class="list-group-item" ng-repeat="cinemaDetail in cinema.data">
+              <a href="/index.html#/cinemaDetail/{{cinemaDetail.id}}">{{cinemaDetail.nm}}</a>
+            </li>
         </ul>
 
     </div>

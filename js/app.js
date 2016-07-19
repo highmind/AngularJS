@@ -17,6 +17,10 @@
       templateUrl : 'views/cinema.html',
       controller : 'CinemaController'
     })
+    .when('/cinemaDetail/:cinemaId',{
+      templateUrl : 'views/cinema-detail.html',
+      controller : 'CinemaDetailController'
+    })
     .otherwise({
       redirectTo: '/'
     })
@@ -82,6 +86,38 @@
         }
 
        console.log($scope.cinemaData )
+
+    });
+
+  });
+
+    // 影院详情controller 
+  app.controller('CinemaDetailController', function($scope, $rootElement, $http,$routeParams, $location){
+
+    $scope.cinemaDetailData = [];
+    $scope.cinemaDetes = [];
+
+
+
+    // 使用jsonp跨越访问远程接口
+    $http.jsonp("http://gyy.jastoo.net/api/cinema-detail.php?callback=JSON_CALLBACK&cinemaid="+$routeParams.cinemaId).success(function(response) {
+      $scope.id = response.data.movies[0].id;
+      console.log($scope.id);
+       // 使用jsonp跨越访问远程接口
+      $http.jsonp("http://gyy.jastoo.net/api/cinema-detail.php?callback=JSON_CALLBACK&cinemaid="+$routeParams.cinemaId+'&movieid='+$scope.id).success(function(response) {
+          $scope.cinemaDetailData = response.data;
+        
+
+          for(var item in response.data.DateShow){
+            var json = {'item' : item, 'data' : response.data.DateShow[item] };
+            $scope.cinemaDetes.push(json);
+          }
+
+          console.log($scope.cinemaDetes)
+
+          // $scope.cinemaDetes = response.data.Dates;
+
+      });
 
     });
 
