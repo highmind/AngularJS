@@ -33,7 +33,7 @@
     $scope.movieArr = [];
     
     // 使用jsonp跨越访问远程接口
-    $http.jsonp("http://gyy.jastoo.net/api/movie-my.php?callback=JSON_CALLBACK").success(function(response) {
+    $http.jsonp("http://101.201.115.46/code-test/api/ajs-movie-my/movie-my.php?callback=JSON_CALLBACK").success(function(response) {
 
         $scope.movieArr = response.data.movies;
         console.log($scope.movieArr.length);
@@ -49,7 +49,7 @@
     $scope.reviewData = [];
     // console.log($routeParams.movieId);
      // 使用jsonp跨越访问远程接口
-    $http.jsonp("http://gyy.jastoo.net/api/detail-my.php?callback=JSON_CALLBACK&id="+$routeParams.movieId).success(function(data) {
+    $http.jsonp("http://101.201.115.46/code-test/api/ajs-movie-my/detail-my.php?callback=JSON_CALLBACK&id="+$routeParams.movieId).success(function(data) {
  
         $scope.detailData = data.data.MovieDetailModel;
         $scope.reviewData = data.data.CommentResponseModel.cmts;
@@ -78,7 +78,7 @@
     $scope.cinemaData = [];
 
     // 使用jsonp跨越访问远程接口
-    $http.jsonp("http://gyy.jastoo.net/api/cinema-my.php?callback=JSON_CALLBACK").success(function(response) {
+    $http.jsonp("http://101.201.115.46/code-test/api/ajs-movie-my/cinema-my.php?callback=JSON_CALLBACK").success(function(response) {
         // 将影院所在区进行整理
         for(var item in response.data){
           var json = {'item' : item, 'data' : response.data[item] };
@@ -100,11 +100,11 @@
 
 
     // 使用jsonp跨越访问远程接口
-    $http.jsonp("http://gyy.jastoo.net/api/cinema-detail.php?callback=JSON_CALLBACK&cinemaid="+$routeParams.cinemaId).success(function(response) {
+    $http.jsonp("http://101.201.115.46/code-test/api/ajs-movie-my/cinema-detail.php?callback=JSON_CALLBACK&cinemaid="+$routeParams.cinemaId).success(function(response) {
       $scope.id = response.data.movies[0].id;
       console.log($scope.id);
        // 使用jsonp跨越访问远程接口
-      $http.jsonp("http://gyy.jastoo.net/api/cinema-detail.php?callback=JSON_CALLBACK&cinemaid="+$routeParams.cinemaId+'&movieid='+$scope.id).success(function(response) {
+      $http.jsonp("http://101.201.115.46/code-test/api/ajs-movie-my/cinema-detail.php?callback=JSON_CALLBACK&cinemaid="+$routeParams.cinemaId+'&movieid='+$scope.id).success(function(response) {
           $scope.cinemaDetailData = response.data;
         
 
