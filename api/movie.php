@@ -4,6 +4,6 @@
  $url = 'http://api.douban.com/v2/movie/in_theaters';
  $content = file_get_contents($url);
  
- echo('angular.callbacks._0('. $content .')');
+ echo($str.'('. $content .')');
 
 ?>
